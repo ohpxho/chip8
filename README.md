@@ -12,6 +12,7 @@ A chip 8 emulator in C.
 - **0x000-0x1FF**: Reserved for the interpreter. [2]
 - **0x200-0xFFF**: Program memory, where application code is loaded [2]
 - **Font Data**: First 80 bytes store built-in hex font sprites for numbers and letters (0-F). [2]
+- **The final 352 bytes of memory(starts at 0x6A0 for 2048 bytes of RAM) are reserved for varialbles and display refresh** (This segment of memory should be used by programs running on CHIP 8)
 
 ### Registers
 
