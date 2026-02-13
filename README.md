@@ -1,6 +1,8 @@
 # CHIP8
 
-A chip 8 emulator in C.
+A chip 8 interpreter in C.
+
+> Chip-8 is a simple, interpreted, programming language which was first used on some do-it-yourself computer systems in the late 1970s and early 1980s. [3]
 
 ### Notes
 
@@ -9,10 +11,37 @@ A chip 8 emulator in C.
 
 ### Memory
 
+- **4KB (4,096 bytes)** in size
 - **0x000-0x1FF**: Reserved for the interpreter. [2]
 - **0x200-0xFFF**: Program memory, where application code is loaded [2]
 - **Font Data**: First 80 bytes store built-in hex font sprites for numbers and letters (0-F). [2]
-- **The final 352 bytes of memory(starts at 0x6A0 for 2048 bytes of RAM) are reserved for varialbles and display refresh** (This segment of memory should be used by programs running on CHIP 8)
+- **The final 352 bytes of memory are reserved for varialbles and display refresh** (This segment of memory should be used by programs running on CHIP 8)
+
+```
++------------------+ 0xFFF (4095) End of Chip-8 RAM
+|                  |
+|                  |
+|                  |
+|   Chip-8         |
+|   Program/Data   |
+|   Space          |
+|   0x200-0xFFF    |
+|                  |
+|                  |
+|                  |
++- - - - - - - - - + 0x600 (1536) Start of ETI 660 Chip-8 programs
+|                  |
+|                  |
++------------------+ 0x200 (512) Start of most Chip-8 programs
+|                  |
+|   Reserved for   |
+|   Interpreter    |
+|   0x000-0x1FF    |
+|                  |
++------------------+ 0x000 (0) Start of Chip-8 RAM
+
+(Cowgod's CHIP-8 Technical Reference)
+```
 
 ### Registers
 
@@ -20,6 +49,8 @@ A chip 8 emulator in C.
   - **vf** is a flag for checking carry or collisions. [2]
 - **16-bit index register (I)**: For storing memory address
 - **16-bit program counter (PC)**: Points to the current instruction
+- **16-bit stack pointer (SP)**: Point to the most top level of the stack.
+- **2 8-bit for sound and delay time**: When non-zero, they are automatically decremented at a rate of 60Hz
 
 ### Stack
 
@@ -35,6 +66,20 @@ A chip 8 emulator in C.
 - Sprites are **XORed** with the existing screen pixels.
 
 ### Input
+
+- **16 key** hexadecimal keypad
+
+```
++---+---+---+---+
+| 1 | 2 | 3 | C |
++---+---+---+---+
+| 4 | 5 | 6 | D |
++---+---+---+---+
+| 7 | 8 | 9 | E |
++---+---+---+---+
+| A | 0 | B | F |
++---+---+---+---+
+```
 
 ### Timers
 

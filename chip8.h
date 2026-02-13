@@ -85,7 +85,9 @@ typedef struct {
   uint8_t vf;  // flag
   uint16_t i;  // index
   uint16_t pc; // program counter
-
+  uint16_t sp; // stack pointer
+  uint8_t st;  // sound timer
+  uint8_t dt;  // delay timer
 } Register;
 
 #endif // CHIP8_H
