@@ -83,6 +83,17 @@ A chip 8 interpreter in C.
 
 ### Timers
 
+#### Delay
+
+- The delay timer is active whenver the delay timer is not zero.
+- It does nothing but subtract one to the dt register until it reaches 0 at rate of 60hz.
+
+#### Sound
+
+- The sound timer is active whenver the sound timer is not zero.
+- Decrements the st register by one until it reaches 0.
+- When st is not zero, the chip 8 buzzer will sound whatever that is.
+
 ### Reference
 
 1. https://github.com/mattmikolay/chip-8/wiki
