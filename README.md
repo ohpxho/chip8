@@ -5,7 +5,7 @@ A chip 8 emulator in C.
 ### Notes
 
 - CHIP-8 programs are strictly hexadecimal based. [1]
-- Intructions are **two-bytes** in length and is represented using 4 hex digits. [1]
+- Intructions are **two-bytes** in length and is represented using 4 hex digits. And stored in the memory in **big-endian** order. [1]
 
 ### Memory
 
@@ -35,7 +35,10 @@ A chip 8 emulator in C.
 
 ### Input
 
+### Timers
+
 ### Reference
 
 1. https://github.com/mattmikolay/chip-8/wiki
 2. https://cfiraguston.medium.com/chip-8-a-classic-computing-simplicity-c2e314bd9803
+3. Cowgod's CHIP-8 Technical Reference (pdf)
