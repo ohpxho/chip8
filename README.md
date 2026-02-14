@@ -15,7 +15,7 @@ A chip 8 interpreter in C.
 - **0x000-0x1FF**: Reserved for the interpreter. [2]
 - **0x200-0xFFF**: Program memory, where application code is loaded [2]
 - **Font Data**: First 80 bytes store built-in hex font sprites for numbers and letters (0-F). [2]
-- **The final 352 bytes of memory are reserved for varialbles and display refresh** (This segment of memory should be used by programs running on CHIP 8)
+- **The final 352 bytes of memory are reserved for varialbles and display refresh** (This segment of memory must not be used by programs running on CHIP 8)
 
 ```
 +------------------+ 0xFFF (4095) End of Chip-8 RAM
@@ -99,3 +99,4 @@ A chip 8 interpreter in C.
 1. https://github.com/mattmikolay/chip-8/wiki
 2. https://cfiraguston.medium.com/chip-8-a-classic-computing-simplicity-c2e314bd9803
 3. Cowgod's CHIP-8 Technical Reference (pdf)
+4. https://tobiasvl.github.io/blog/write-a-chip-8-emulator/
