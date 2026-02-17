@@ -27,4 +27,6 @@ typedef struct {
   uint8_t dt;  // delay timer
 } Register;
 
+void boot();
+
 #endif // CHIP8_H
