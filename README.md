@@ -49,7 +49,7 @@ A chip 8 interpreter in C.
   - **vf** is a flag for checking carry or collisions. [2]
 - **16-bit index register (I)**: For storing memory address
 - **16-bit program counter (PC)**: Points to the current instruction
-- **16-bit stack pointer (SP)**: Point to the most top level of the stack.
+- **16-bit stack pointer (SP)**: Point to the most top level of the stacjk.
 - **2 8-bit for sound and delay time**: When non-zero, they are automatically decremented at a rate of 60Hz
 
 ### Stack
