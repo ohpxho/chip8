@@ -1,9 +1,11 @@
 #include "chip8.h"
-#include "raylib.h"
+#include <SDL2/SDL.h>
+#include <raylib.h>
 #include <stdlib.h>
 
 #define SCREEN_WIDTH 64
 #define SCREEN_HEIGHT 32
+#define FPS 60
 #define LEN(x) (sizeof(x) / sizeof((x)[0]))
 
 uint8_t mem[4096];
@@ -41,20 +43,38 @@ void MapFonts() {
   }
 }
 
-void MapKeypad() {}
-
 void InitScreen() {
   InitWindow(SCREEN_HEIGHT, SCREEN_WIDTH, "Chip8");
-  SetTargetFPS(60);
+  SetTargetFPS(FPS);
+}
+
+void HandleKeyboardEvent(SDL_Event *event) {
+  while (SDL_PollEvent(event)) {
+    if (event->type != SDL_KeyboardEvent) {
+      return;
+    }
+
+    SDL_KeyboardEvent *key = &event->key;
+
+    switch (key->type) {}
+  }
 }
 
 void boot() {
-  MapFonts();  // setup fonts in mem
-  MapKeypad(); // setup keypad, map it into the keyboard
+  MapFonts(); // setup fonts in mem
   InitScreen();
 }
 
+void ClearScreen() {}
+
+void Exit() { CloseWindow(); }
+
 int main() {
   boot();
+
+  while (!WindowShouldClose()) {
+    SDL_Event event;
+    HandleKeyboardEvent(&event);
+  }
   return 0;
 }
